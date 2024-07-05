@@ -32,12 +32,26 @@ export default {
       date: "",
     };
   },
+
   methods: {
     search() {
       localStorage.setItem("selectedDestination", this.destination);
       localStorage.setItem("selectedDate", this.date);
 
-      this.$router.push("/dashboard/BuscadorActSec");
+      const baseURL = "https://api.nasa.gov/planetary/apod"; // AQUI REEMPLAZAR CON EL LINK DE LA API DE GET ACTIVIDAD
+
+      const url = `${baseURL}?date=${this.date}&destination=${this.destination}`; // AQUI REEMPLAZAR CON LO QUE DEBERIA SEGUIR PARA QUE CAPTE
+      // LA URL SEGUN EL DATE Y DESTINATION
+      axios
+        .get(url)
+        .then((response) => {
+          console.log("Solicitud exitosa");
+          localStorage.setItem("actividadData", JSON.stringify(responde.data));
+          this.$router.push("/dashboard/BuscadorActSec");
+        })
+        .catch((error) => {
+          console.error("Error fetching actividad data:", error);
+        });
     },
   },
 };

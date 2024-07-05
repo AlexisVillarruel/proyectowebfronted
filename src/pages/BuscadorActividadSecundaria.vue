@@ -18,6 +18,10 @@
         </div>
         <button @click="search">Buscar</button>
       </div>
+      <div class="scroll-container">
+        <h2>Contenedor con Scroll</h2>
+        <p v-for="n in 50" :key="n">Elemento {{ n }}</p>
+      </div>
       <h1>Ejemplo de imagen como fondo en Vue</h1>
     </div>
   </div>
@@ -32,6 +36,7 @@ export default {
       date: "",
     };
   },
+
   mounted() {
     const selectedDestination = localStorage.getItem("selectedDestination");
     const selectedDate = localStorage.getItem("selectedDate");
@@ -43,6 +48,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .mi-componente {
   position: relative;
@@ -82,6 +88,17 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.scroll-container {
+  background-color: #f0f0f0;
+  padding: 20px 500px;
+  border-radius: 15px;
+  border: 2px solid black;
+  width: calc(100% - 290px);
+  height: 100%;
+  overflow-y: auto;
+  margin-left: 100px;
 }
 
 .filtro-label {
