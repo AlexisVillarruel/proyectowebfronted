@@ -34,8 +34,10 @@ export default {
   },
   methods: {
     search() {
-      console.log("Destino seleccionado:", this.destination);
-      console.log("Fecha seleccionada:", this.date);
+      localStorage.setItem("selectedDestination", this.destination);
+      localStorage.setItem("selectedDate", this.date);
+
+      this.$router.push("/dashboard/BuscadorActSec");
     },
   },
 };

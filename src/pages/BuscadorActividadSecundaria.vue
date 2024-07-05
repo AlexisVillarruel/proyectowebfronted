@@ -32,11 +32,14 @@ export default {
       date: "",
     };
   },
-  methods: {
-    search() {
-      console.log("Destino seleccionado:", this.destination);
-      console.log("Fecha seleccionada:", this.date);
-    },
+  mounted() {
+    const selectedDestination = localStorage.getItem("selectedDestination");
+    const selectedDate = localStorage.getItem("selectedDate");
+
+    if (selectedDestination && selectedDate) {
+      this.destination = selectedDestination;
+      this.date = selectedDate;
+    }
   },
 };
 </script>
