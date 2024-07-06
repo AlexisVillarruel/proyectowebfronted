@@ -1,6 +1,6 @@
 <template>
   <div class="container registerForm">
-    <div class="title">Registrate</div>
+    <div class="title">Registrate Usuario</div>
     <div class="content">
       <form action="#">
         <div class="user-details">
