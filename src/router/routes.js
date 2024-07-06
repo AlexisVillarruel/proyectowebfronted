@@ -6,8 +6,18 @@ const routes = [
   },
 
   {
-    path: "/register",
+    path: "/registroUsuario",
     component: () => import("components/auth/RegisterForm.vue"),
+  },
+
+  {
+    path: "/registroEmpresa",
+    component: () => import("components/auth/RegisterFormEmpresa.vue"),
+  },
+
+  {
+    path: "/login",
+    component: () => import("components/auth/LoginForm.vue"),
   },
 
   // Always leave this as last one,
