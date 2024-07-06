@@ -12,6 +12,14 @@ const routes = [
         path: "actividadesSec",
         component: () => import("pages/BuscadorActividadSecundaria.vue"),
       },
+      {
+        path: "crearactividad",
+        component: () => import("pages/ActividadCrea.vue"),
+      },
+      {
+        path: "reseña",
+        component: () => import("pages/ReseñasFormulario.vue"),
+      },
     ],
   },
 
