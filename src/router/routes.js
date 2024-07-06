@@ -1,23 +1,23 @@
 const routes = [
   {
-    path: "/",
+    path: "/dashboard",
     component: () => import("layouts/MainLayout.vue"),
     children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
   },
 
   {
-    path: "/register",
+    path: "/registroUsuario",
     component: () => import("components/auth/RegisterForm.vue"),
   },
 
   {
-    path: "/Activity",
-    component: () => import("pages/ActividadCrea.vue"),
+    path: "/registroEmpresa",
+    component: () => import("components/auth/RegisterFormEmpresa.vue"),
   },
 
   {
-    path: "/Review",
-    component: () => import("pages/ReseñaFormulario.vue"),
+    path: "/",
+    component: () => import("components/auth/LoginForm.vue"),
   },
 
   // Always leave this as last one,
