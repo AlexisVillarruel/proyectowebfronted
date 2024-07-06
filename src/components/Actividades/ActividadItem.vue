@@ -2,9 +2,8 @@
   <div class="act-item">
     <div class="details">
       <div class="imagenact">
-        <img :src="act.imagen_actividad" :alt="act.titulo" />
+        <img :src="act.imagenActividad" :alt="act.titulo" />
       </div>
-
       <div class="title-and-date">
         <h2 class="act-title">{{ act.titulo }}</h2>
         <p>{{ act.fecha }}</p>
@@ -18,9 +17,9 @@
 
 <script>
 export default {
-  name: "ApodItem",
+  name: "ActividadItem",
   props: {
-    apod: {
+    act: {
       type: Object,
       required: true,
     },
@@ -28,7 +27,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .act-item {
   border: 1px solid #ccc;
   padding: 10px;
@@ -55,7 +54,7 @@ export default {
   border-radius: 5px;
 }
 
-.apod-item .title-and-date {
+.act-item .title-and-date {
   margin-bottom: 10px;
 }
 

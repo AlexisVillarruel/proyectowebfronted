@@ -4,7 +4,7 @@
       <h3 class="list-title">Listado de Actividades</h3>
     </div>
     <div class="act-list">
-      <div class="act-item-wrapper" v-for="act in acts" :key="act.date">
+      <div class="act-item-wrapper" v-for="act in acts" :key="act.actividadId">
         <ActividadItem :act="act" />
       </div>
     </div>
@@ -33,6 +33,11 @@ export default {
     const actData = localStorage.getItem("ActividadData");
     if (actData) {
       this.actsData = JSON.parse(actData);
+      console.log("Datos de actividades recuperados:", this.actsData); // Añade este log para depurar
+    } else {
+      console.error(
+        "No se encontraron datos de actividades en el almacenamiento local."
+      );
     }
   },
 };

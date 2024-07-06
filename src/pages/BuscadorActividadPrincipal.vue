@@ -25,7 +25,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "MiComponente",
   data() {
@@ -40,10 +39,7 @@ export default {
       localStorage.setItem("selectedDestination", this.destination);
       localStorage.setItem("selectedDate", this.date);
 
-      const url = "http://localhost:5290/api/Actividades"; // AQUI REEMPLAZAR CON EL LINK DE LA API DE GET ACTIVIDAD
-
-      //const url = `${baseURL}?date=${this.date}&destination=${this.destination}`; // AQUI REEMPLAZAR CON LO QUE DEBERIA SEGUIR PARA QUE CAPTE
-      // LA URL SEGUN EL DATE Y DESTINATION
+      const url = "http://localhost:5290/api/Actividades";
       axios
         .get(url)
         .then((response) => {
