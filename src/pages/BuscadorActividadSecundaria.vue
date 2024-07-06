@@ -19,8 +19,11 @@
         <button @click="search">Buscar</button>
       </div>
       <div class="scroll-container">
-        <h2>Contenedor con Scroll</h2>
-        <p v-for="n in 50" :key="n">Elemento {{ n }}</p>
+        <div class="act-page">
+          <div class="act-list q-mr-md">
+            <ActividadList />
+          </div>
+        </div>
       </div>
       <h1>Ejemplo de imagen como fondo en Vue</h1>
     </div>
@@ -28,8 +31,14 @@
 </template>
 
 <script>
+import ActividadList from "src/components/Actividades/ActividadList.vue";
+
 export default {
-  name: "MiComponente",
+  name: "ActPage",
+  components: {
+    ActividadList,
+  },
+
   data() {
     return {
       destination: "Lima",
@@ -37,14 +46,28 @@ export default {
     };
   },
 
-  mounted() {
-    const selectedDestination = localStorage.getItem("selectedDestination");
-    const selectedDate = localStorage.getItem("selectedDate");
+  methods: {
+    search() {
+      localStorage.setItem("selectedDestination", this.destination);
+      localStorage.setItem("selectedDate", this.date);
 
-    if (selectedDestination && selectedDate) {
-      this.destination = selectedDestination;
-      this.date = selectedDate;
-    }
+      const url = "http://localhost:5290/api/Actividades"; // AQUI REEMPLAZAR CON EL LINK DE LA API DE GET ACTIVIDAD
+
+      //const url = `${baseURL}?date=${this.date}&destination=${this.destination}`; // AQUI REEMPLAZAR CON LO QUE DEBERIA SEGUIR PARA QUE CAPTE
+      // LA URL SEGUN EL DATE Y DESTINATION
+      axios
+        .get(url)
+        .then((response) => {
+          console.log("Solicitud exitosa:", response.data);
+
+          localStorage.setItem("ActividadData", JSON.stringify(response.data));
+          this.$router.push("/dashboard/BuscadorActSec");
+        })
+
+        .catch((error) => {
+          console.error("Error fetching Item data:", error);
+        });
+    },
   },
 };
 </script>
@@ -92,13 +115,13 @@ export default {
 
 .scroll-container {
   background-color: #f0f0f0;
-  padding: 20px 500px;
+  padding: 20px 550px;
   border-radius: 15px;
   border: 2px solid black;
   width: calc(100% - 290px);
   height: 100%;
   overflow-y: auto;
-  margin-left: 100px;
+  margin-left: 60px;
 }
 
 .filtro-label {
@@ -141,5 +164,19 @@ button:hover {
 
 .fondo-container h1 {
   margin-bottom: 20px;
+}
+
+.act-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0b3d91;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.act-list {
+  width: 100%;
 }
 </style>

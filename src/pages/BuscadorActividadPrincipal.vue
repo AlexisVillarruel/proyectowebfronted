@@ -7,7 +7,7 @@
         <div class="filter-group">
           <label for="destinos">Destinos</label>
           <select id="destinos" v-model="destination">
-            <option value="Lima">Lima</option>
+            <option value="Lima">Ciudad</option>
             <option value="Cusco">Cusco</option>
             <option value="Arequipa">Arequipa</option>
           </select>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "MiComponente",
   data() {
@@ -38,19 +40,21 @@ export default {
       localStorage.setItem("selectedDestination", this.destination);
       localStorage.setItem("selectedDate", this.date);
 
-      const baseURL = "https://api.nasa.gov/planetary/apod"; // AQUI REEMPLAZAR CON EL LINK DE LA API DE GET ACTIVIDAD
+      const url = "http://localhost:5290/api/Actividades"; // AQUI REEMPLAZAR CON EL LINK DE LA API DE GET ACTIVIDAD
 
-      const url = `${baseURL}?date=${this.date}&destination=${this.destination}`; // AQUI REEMPLAZAR CON LO QUE DEBERIA SEGUIR PARA QUE CAPTE
+      //const url = `${baseURL}?date=${this.date}&destination=${this.destination}`; // AQUI REEMPLAZAR CON LO QUE DEBERIA SEGUIR PARA QUE CAPTE
       // LA URL SEGUN EL DATE Y DESTINATION
       axios
         .get(url)
         .then((response) => {
-          console.log("Solicitud exitosa");
-          localStorage.setItem("actividadData", JSON.stringify(responde.data));
+          console.log("Solicitud exitosa:", response.data);
+
+          localStorage.setItem("ActividadData", JSON.stringify(response.data));
           this.$router.push("/dashboard/BuscadorActSec");
         })
+
         .catch((error) => {
-          console.error("Error fetching actividad data:", error);
+          console.error("Error fetching Item data:", error);
         });
     },
   },

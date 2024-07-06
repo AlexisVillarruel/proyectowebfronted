@@ -1,19 +1,16 @@
 <template>
-  <div class="actividad-item">
-    <div class="actividad-details">
-      <div class="actividad-imagen">
-        <img :src="actividad.imagen_actividad" alt="Imagen de la actividad" />
+  <div class="act-item">
+    <div class="details">
+      <div class="imagenact">
+        <img :src="act.imagen_actividad" :alt="act.titulo" />
       </div>
 
-      <div class="actividad-info">
-        <h2 class="actividad-titulo">{{ actividad.titulo }}</h2>
-        <p class="actividad-descripcion">{{ actividad.descripcion_pequeña }}</p>
-
-        <p class="actividad-fecha">{{ actividad.fecha }}</p>
+      <div class="title-and-date">
+        <h2 class="act-title">{{ act.titulo }}</h2>
+        <p>{{ act.fecha }}</p>
       </div>
-
-      <div class="empresa-imagen">
-        <img :src="actividad.imagen_empresa" alt="Imagen de la empresa" />
+      <div class="description_peque">
+        <p>{{ act.descripcionPequeña }}</p>
       </div>
     </div>
   </div>
@@ -21,9 +18,9 @@
 
 <script>
 export default {
-  name: "ActividadItem",
+  name: "ApodItem",
   props: {
-    actividad: {
+    apod: {
       type: Object,
       required: true,
     },
@@ -31,65 +28,53 @@ export default {
 };
 </script>
 
-<style scoped>
-.actividad-item {
+<style>
+.act-item {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.actividad-details {
-  display: flex;
-  align-items: center;
+  text-align: center;
   width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  color: #333;
 }
 
-.actividad-imagen {
-  flex: 0 0 auto;
-  margin-right: 10px;
-}
-
-.actividad-imagen img {
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
-  object-fit: cover;
-}
-
-.actividad-info {
-  flex: 1 1 auto;
-}
-
-.actividad-titulo {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.actividad-descripcion {
-  font-size: 14px;
-  color: #666;
+.act-item .imagenact {
   margin-bottom: 10px;
 }
 
-.actividad-fecha {
-  font-size: 12px;
-  color: #888;
+.act-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.apod-item .title-and-date {
+  margin-bottom: 10px;
+}
+
+.act-title {
+  font-size: 24px;
+  font-family: "Arial Black", sans-serif;
+  color: #000;
   margin-bottom: 5px;
 }
 
-.empresa-imagen {
-  flex: 0 0 auto;
+.act-item .title-and-date p {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
 }
 
-.empresa-imagen img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
+.act-item .description_peque {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
 }
 </style>

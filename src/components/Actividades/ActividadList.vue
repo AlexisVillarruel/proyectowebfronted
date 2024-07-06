@@ -3,20 +3,15 @@
     <div class="title-bar">
       <h3 class="list-title">Listado de Actividades</h3>
     </div>
-    <div class="actividad-list">
-      <div
-        class="actividad-item-wrapper"
-        v-for="actividades in actividades"
-        :key="actividades.date"
-      >
-        <ActividadItem :actividad="actividad" />
+    <div class="act-list">
+      <div class="act-item-wrapper" v-for="act in acts" :key="act.date">
+        <ActividadItem :act="act" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import ActividadItem from "./ActividadItem.vue";
 
 export default {
@@ -26,13 +21,19 @@ export default {
   },
   data() {
     return {
-      actividadData: [],
+      actsData: [],
     };
   },
   computed: {
-    actividad() {
-      return this.actividadData;
+    acts() {
+      return this.actsData;
     },
+  },
+  mounted() {
+    const actData = localStorage.getItem("ActividadData");
+    if (actData) {
+      this.actsData = JSON.parse(actData);
+    }
   },
 };
 </script>
@@ -56,13 +57,13 @@ export default {
   color: #fff;
 }
 
-.actividad-list {
+.act-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.actividad-item-wrapper {
+.act-item-wrapper {
   background-color: red;
   padding: 5px;
   border-radius: 8px;
