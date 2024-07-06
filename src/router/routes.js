@@ -1,18 +1,23 @@
 const routes = [
   {
     path: "/dashboard",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
+  },
 
-    children: [
-      {
-        path: "BuscadorActPrin",
-        component: () => import("pages/BuscadorActividadPrincipal.vue"),
-      },
+  {
+    path: "/registroUsuario",
+    component: () => import("components/auth/RegisterForm.vue"),
+  },
 
-      {
-        path: "BuscadorActSec",
-        component: () => import("pages/BuscadorActividadSecundaria.vue"),
-      },
-    ],
+  {
+    path: "/registroEmpresa",
+    component: () => import("components/auth/RegisterFormEmpresa.vue"),
+  },
+
+  {
+    path: "/",
+    component: () => import("components/auth/LoginForm.vue"),
   },
 
   // Always leave this as last one,
