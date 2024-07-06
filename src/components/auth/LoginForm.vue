@@ -34,7 +34,9 @@
       </div>
       <div class="form-group">
         <input type="checkbox" v-model="esEmpresa" id="esEmpresa" />
-        <label for="esEmpresa">Iniciar sesión como Empresa</label>
+        <label for="esEmpresa" class="checkbox-label"
+          >Iniciar sesión como Empresa</label
+        >
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
@@ -138,12 +140,14 @@ export default {
   border-radius: 5px;
   text-align: left;
 }
+
 .form-group label[for="esEmpresa"] {
   /* Estilos para el label específico */
   font-weight: bold;
   color: #333;
   margin-left: 9px; /* Ejemplo: Ajustar el margen izquierdo */
 }
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -167,6 +171,8 @@ export default {
   border-radius: 3px;
   padding: 10px 20px;
   cursor: pointer;
+  display: block;
+  margin: auto; /* Añadir margen automático para centrar horizontalmente */
 }
 
 .btn-primary:hover {

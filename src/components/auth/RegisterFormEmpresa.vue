@@ -95,7 +95,7 @@ export default {
         .post(URL, usuarios)
         .then((response) => {
           console.log("registro es : " + JSON.stringify(response));
-          this.$router.push("/");
+          this.$router.push("/login");
         })
         .catch((error) => {
           console.log("error : " + JSON.stringify(error));
