@@ -100,7 +100,7 @@ export default {
           console.log("Login exitoso, usuario: " + JSON.stringify(usuario));
           // Maneja el login exitoso (por ejemplo, guarda la información en localStorage o Vuex)
           localStorage.setItem("usuario", JSON.stringify(usuario));
-          this.$router.push("/");
+          this.$router.push("/dashboard/actividades");
         } else {
           console.log("Login fallido: Credenciales inválidas");
           alert("Credenciales inválidas");

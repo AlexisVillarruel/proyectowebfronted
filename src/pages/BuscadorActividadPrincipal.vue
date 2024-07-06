@@ -46,7 +46,7 @@ export default {
           console.log("Solicitud exitosa:", response.data);
 
           localStorage.setItem("ActividadData", JSON.stringify(response.data));
-          this.$router.push("/dashboard/BuscadorActSec");
+          this.$router.push("/dashboard/actividadesSec");
         })
 
         .catch((error) => {

@@ -1,8 +1,18 @@
 const routes = [
   {
     path: "/dashboard",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
+
+    children: [
+      { path: "", component: () => import("pages/IndexPage.vue") },
+      {
+        path: "actividades",
+        component: () => import("pages/BuscadorActividadPrincipal.vue"),
+      },
+      {
+        path: "actividadesSec",
+        component: () => import("pages/BuscadorActividadSecundaria.vue"),
+      },
+    ],
   },
 
   {
