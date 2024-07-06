@@ -12,6 +12,11 @@ const routes = [
         path: "BuscadorActSec",
         component: () => import("pages/BuscadorActividadSecundaria.vue"),
       },
+
+      {
+        path: "Estadisticas",
+        component: () => import("pages/Estadistica.vue"),
+      },
     ],
   },
 
